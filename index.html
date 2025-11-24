@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan Marsel & Norma</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap');
+
+:root {
+  --gold: #b89d77;
+  --soft-gold: #d3b48c;
+  --text-light: #f0e5d8;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+              url('image/17.JPG') no-repeat center/cover;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  animation: fadeInBg 2.5s ease forwards;
+}
+
+@keyframes fadeInBg {
+  from { filter: blur(8px) brightness(0.5); opacity: 0; }
+  to { filter: blur(0); opacity: 1; }
+}
+
+/* Motif lembut */
+body::after {
+  content: "";
+  background: url('image/17.JPG') no-repeat center bottom / 250px;
+  opacity: 0.05;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  pointer-events: none;
+}
+
+/* Efek bunga jatuh */
+.petal {
+  position: fixed;
+  top: -10px;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, #ffd6e8 0%, #f3a6c2 70%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Animasi teks */
+.fade-in {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 1.8s ease forwards;
+}
+.fade-in.delay1 { animation-delay: 0.5s; }
+.fade-in.delay2 { animation-delay: 1s; }
+.fade-in.delay3 { animation-delay: 1.5s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subtitle {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+  to { text-shadow: 0 0 15px rgba(255,255,255,0.8); }
+}
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  margin-bottom: 5px;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.nama-tamu {
+  font-weight: 700;
+  font-size: 22px;
+  margin-top: 15px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.teks-ucapan {
+  font-size: 14px;
+  color: #ddd;
+  margin-top: 10px;
+  max-width: 320px;
+}
+
+.btn {
+  background-color: var(--gold);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover {
+  background-color: var(--soft-gold);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  font-size: 12px;
+  color: #ccc;
+  opacity: 0.8;
+}
+
+/* Tombol musik */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.4s ease, background 0.4s ease;
+  z-index: 100;
+}
+.music-btn:hover {
+  background: var(--soft-gold);
+  transform: rotate(15deg) scale(1.1);
+}
+</style>
+</head>
+
+<body>
+  <p class="subtitle fade-in delay1">HAPPY WEDDING</p>
+  <h1 class="title fade-in delay2">Marsel & Norma</h1>
+
+  <p class="fade-in delay3" style="margin-top:25px;">Kepada Yth.</p>
+  <div class="nama-tamu fade-in delay3" id="namaTamu">Tamu Undangan</div>
+  <p class="teks-ucapan fade-in delay3">
+    Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami.
+  </p>
+
+  <a href="wedding.html?nama=Bapak+Budi" class="btn fade-in delay3">💌 Buka Sampul</a>
+
+  <footer>© 2025 Marsel & Norma Wedding Invitation | All Rights Reserved</footer>
+
+  <!-- Musik -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4f8b6a2a5a.mp3" type="audio/mpeg">
+  </audio>
+  <button id="musicBtn" class="music-btn">🎵</button>
+
+<script>
+// Ambil nama dari URL
+const params = new URLSearchParams(window.location.search);
+const nama = params.get("nama");
+const elemenNama = document.getElementById("namaTamu");
+if (nama) elemenNama.textContent = decodeURIComponent(nama);
+
+// Musik tombol kontrol
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+let playing = false;
+btn.addEventListener("click", () => {
+  if (!playing) { music.play(); btn.textContent = "🔇"; }
+  else { music.pause(); btn.textContent = "🎵"; }
+  playing = !playing;
+});
+
+// Auto-play lembut
+window.addEventListener("load", () => {
+  const playPromise = music.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => { playing = true; btn.textContent = "🔇"; })
+    .catch(() => { playing = false; });
+  }
+});
+
+// Efek bunga jatuh
+function createPetal(){
+  const petal = document.createElement("div");
+  petal.className = "petal";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = 6 + Math.random() * 4 + "s";
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(), 10000);
+}
+setInterval(createPetal, 500);
+</script>
+</body>
+</html>

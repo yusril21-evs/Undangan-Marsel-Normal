@@ -41,7 +41,7 @@ header {
   position: relative;
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
   overflow: hidden;
-  background: url('image/1.JPG') center/cover no-repeat;
+  background: url('image/1.jpg') center/cover no-repeat;
   animation: zoomHeader 25s ease-in-out infinite alternate;
 }
 .header-inner {
@@ -729,4 +729,5 @@ footer {
 .section::after {
   bottom: 0;
   transform: translateX(-50%) rotate(0deg);
+
 }
